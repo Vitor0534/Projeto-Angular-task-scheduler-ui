@@ -1,3 +1,26 @@
-<h1>Welcome to my project v2</h1>
+<div>
+  <div class = "flex-container" fxLayout = "row">
+    <!--perceba que esse é um componente da material, e que está declarado la no angular-material.module-->
+    <mat-toolbar color="primary">
+      <!--mat-button é um componente da material que estiliza algo como um botão, aqui o link-->
+      <!-- routerLink="/", são os links de rotas, aqui no angular eles indicam as "paginas" que serão mostradas para user-->
+      <!--                 funcionam normal, para mudar de página, so que oq ocorre é carregar os elementos da DOM da pag na SPA-->
+      <a mat-button routerLink="/">
+        <h2> Task Scheduler</h2>
+      </a>
+      <!-- essa class especifica se refere a folha de estilo app.components.css-->
+      <span class="app-spacer"></span>
+      <div>
+        <a mat-button routerLink="/login">
+          Log in
+        </a>
+        <a mat-button routerLink="/cadastro">
+          Cadastre-se
+        </a>
+      </div>
+    </mat-toolbar>
+  </div>
+</div>
+
 
 <router-outlet></router-outlet>
