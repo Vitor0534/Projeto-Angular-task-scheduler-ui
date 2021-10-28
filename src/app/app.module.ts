@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // todos os modulos que serão utilizados devem ser importados aqui
-import { NgxMaskModule, IConfig } from 'ngx-mask';
+//import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { NgxMaskModule} from 'ngx-mask';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 @NgModule({
@@ -16,7 +18,10 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    //Quando se adiciona o importe adiciona o nome aqui também
+    FlexLayoutModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
