@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { NgxMaskModule} from 'ngx-mask';
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {AngularMaterialModule} from "./angular-material.module";
+import {MatDividerModule} from "@angular/material/divider";
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     BrowserAnimationsModule,
     //Quando se adiciona o importe adiciona o nome aqui também
     FlexLayoutModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    AngularMaterialModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
