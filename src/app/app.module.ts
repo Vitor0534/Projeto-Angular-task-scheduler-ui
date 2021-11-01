@@ -11,11 +11,18 @@ import { NgxMaskModule} from 'ngx-mask';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {AngularMaterialModule} from "./angular-material.module";
 import {MatDividerModule} from "@angular/material/divider";
+import { CadastroUsuarioComponent } from './components/usuarios/cadastro-usuario/cadastro-usuario.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {CommonModule} from "@angular/common";
+import {MAT_DATE_LOCALE} from "@angular/material/core";
+
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CadastroUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -25,9 +32,18 @@ import {MatDividerModule} from "@angular/material/divider";
     FlexLayoutModule,
     NgxMaskModule.forRoot(),
     AngularMaterialModule,
-    MatDividerModule
+    MatDividerModule,
+    FormsModule,
+    //serve para conter as regras de negocio do cadastro
+    ReactiveFormsModule,
+    CommonModule
+
+
   ],
-  providers: [],
+  providers: [
+    //esse provide define que os elementos da material estarão em ptbr
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

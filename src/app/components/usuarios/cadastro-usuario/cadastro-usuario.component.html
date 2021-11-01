@@ -1,0 +1,125 @@
+<div class = "cadastro-usuario" calfxLayout = "row" fxLayoutAlign = "center center">
+  <mat-card class = "cadastro-usuario-box">
+    <mat-card-header>
+      <mat-card-title>Cadastre-se</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form" [formGroup] = "formularioCadastro" (submit)="onSubmit()">
+      <mat-card-content>
+        <!-- campo para inserção do nome-->
+        <mat-form-field class="example-full-width">
+          <mat-label>Nome</mat-label>
+          <!-- perceba que, a partir do momento que é atribuido um valor ao formControl
+               esse passa a ser o identificador dele dentro da lista de componentes do formGroup
+               não confunda ele com o parametro name -->
+          <input matInput
+                 [formControl] = "nomeFormControl"
+                 placeholder="Ex. Adolfo da cunha"
+                 required>
+          <!-- *ngIf é uma diretiva, ela muda a estrutura do DOM de acordo com a condição -->
+          <mat-error *ngIf="nomeFormControl.hasError('required')">
+            Nome é obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <!-- campo pra inserção do e-mail-->
+        <!-- required torna o campo obrigatório-->
+        <mat-form-field class="example-full-width">
+          <mat-label>E-mail</mat-label>
+          <input matInput
+                 [formControl] = "emailFormControl"
+                 placeholder="Ex. AdolfoCunha@gmail.com"
+                 required>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            E-mail é obrigatório
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('email') &&
+                            !emailFormControl.hasError('required')">
+            Por favor informe um e-mail válido
+          </mat-error>
+        </mat-form-field>
+
+        <!-- campo para inserção da data de nascimento-->
+        <mat-form-field class="example-full-width">
+          <mat-label>Data de Nascimento</mat-label>
+          <input matInput
+                 [formControl] = "dataNascimentoFormControl"
+                 [matDatepicker]="picker"
+                 [min] = "dataMinima"
+                 [max] = "dataMaxima"
+                 name="dataNascimento">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="dataNascimentoFormControl.hasError('required')">
+            Data de nascimento é obrigatório
+          </mat-error>
+        </mat-form-field>
+
+        <!-- campo para inserção de senha-->
+        <mat-form-field class="example-full-width">
+          <mat-label>Senha</mat-label>
+          <!-- perceba que foi utilizado um operador ternario no type-->
+          <input matInput
+                 placeholder="Senha com no mínimo 8 caracteres"
+                 [formControl] = "senhaFormControl"
+                 name="senha"
+                 [type]="esconderSenha ? 'password': 'text' "
+                 (input) = "onDigitarSenha()"
+                 required>
+          <!-- a variável esconderSenha é um bind dentro do ts deste componente -->
+            <mat-icon matSuffix (click)="esconderSenha = !esconderSenha">
+                   <!-- two way data binding -->
+                   {{esconderSenha ? 'visibility_off' : 'visibility'}}
+            </mat-icon>
+          <mat-error *ngIf="senhaFormControl.hasError('required')">
+            Senha é obrigatória
+          </mat-error>
+          <mat-error *ngIf="senhaFormControl.hasError('minlength')">
+            A Senha tem que ter no mínimo 8 caracteres
+          </mat-error>
+        </mat-form-field>
+
+        <!-- campo de confirmação da senha -->
+        <mat-form-field class="example-full-width">
+          <!-- perceba que, a partir do momento que é atribuido um valor ao formControl
+               esse passa a ser o identificador dele dentro da lista de componentes do formGroup
+               não confunda ele com o parametro name -->
+          <mat-label>Confirme a Senha</mat-label>
+          <!-- perceba que foi utilizado um operador ternario no type-->
+          <input matInput
+                 placeholder="Confirme a Senha"
+                 [formControl] = "confirmeSenhaFormControl"
+                 name="confirmeSenha"
+                 [type]="esconderConfirmarSenha ? 'password': 'text' "
+                 (input) = "onDigitarSenha()"
+                 required>
+          <!-- a variável esconderSenha é um bind dentro do ts deste componente -->
+          <mat-icon matSuffix (click)="esconderConfirmarSenha = !esconderConfirmarSenha">
+            <!-- two way data binding -->
+            {{esconderConfirmarSenha? 'visibility_off' : 'visibility'}}
+          </mat-icon>
+          <mat-error *ngIf="confirmeSenhaFormControl.hasError('required')">
+            Por favor, confirme sua senha
+          </mat-error>
+          <mat-error *ngIf = "confirmeSenhaFormControl.invalid &&
+                              !confirmeSenhaFormControl.hasError('required')">
+            As senhas não conferem
+          </mat-error>
+        </mat-form-field>
+
+        <!-- a propriedade desabled, desabilida o botão de acordo com o valor booleanr
+             da validação do formulário, lembre-se q todos os campos foram checados
+             pelo [formControl] e aqui so é coletado o valor-->
+        <button
+          mat-raised-button
+          color = "primary"
+          type = "submit"
+          class="btn-block"
+          [disabled] = "!formularioCadastro.valid">
+         Cadastrar
+        </button>
+
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>
