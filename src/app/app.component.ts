@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {UsuarioService} from "./services/usuario.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'task-scheduler-ui';
+
+  constructor(private usuarioService: UsuarioService) {
+  }
+
+  existeUsuarioLogado():boolean{
+    return this.usuarioService.existeUsuarioLogado();
+  }
+  nomeUsuarioLogado():string{
+    return this.usuarioService.getNomeUsuarioLogado().toString();
+  }
+
+  realizarLogout():void{
+    this.usuarioService.realizarLogout();
+  }
+
+
 }
