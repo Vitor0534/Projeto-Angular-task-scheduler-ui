@@ -2,7 +2,8 @@
   <div class = "flex-container" fxLayout = "row">
     <!--perceba que esse é um componente da material, e que está declarado la no angular-material.module-->
     <mat-toolbar color="primary">
-      <!--mat-button é um componente da material que estiliza algo como um botão, aqui o link-->
+      <!--mat-button é uma diretiva da material, diretivas são capases de mudar style e comportanmento de elemento
+          que estiliza algo como um botão, aqui o link-->
       <!-- routerLink="/", são os links de rotas, aqui no angular eles indicam as "paginas" que serão mostradas para user-->
       <!--                 funcionam normal, para mudar de página, so que oq ocorre é carregar os elementos da DOM da pag na SPA-->
       <a mat-button routerLink="/">
@@ -20,7 +21,14 @@
       </div>
     </mat-toolbar>
   </div>
+
+  <div fxFlexFill>
+    <!-- router-outlet é o responsável por fazer o mapeamento das rotas criadas
+       como as rotas são variáveis, ele vai substituindo de acordo com a opção
+       selecionada pelo user, automaticamente -->
+    <router-outlet></router-outlet>
+  </div>
+
 </div>
 
 
-<router-outlet></router-outlet>
