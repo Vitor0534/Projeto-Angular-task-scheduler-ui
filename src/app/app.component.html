@@ -9,14 +9,31 @@
       <a mat-button routerLink="/">
         <h2> Task Scheduler</h2>
       </a>
+
+      <div class="bem-vindo" *ngIf="existeUsuarioLogado()">
+        <a style="font-size:14px">
+          Bem-Vindo {{nomeUsuarioLogado()}}
+        </a>
+      </div>
       <!-- essa class especifica se refere a folha de estilo app.components.css-->
       <span class="app-spacer"></span>
       <div>
-        <a mat-button routerLink="/login">
+        <a mat-button routerLink="/login"
+           *ngIf="!existeUsuarioLogado()"
+        >
           Log in
         </a>
-        <a mat-button routerLink="/cadastro">
+        <a mat-button routerLink="/cadastro"
+           *ngIf="!existeUsuarioLogado()"
+        >
           Cadastre-se
+        </a>
+        <a mat-button
+           *ngIf="existeUsuarioLogado()"
+           (click) ="realizarLogout()"
+           routerLink="/">
+          Sair
+           <mat-icon>login</mat-icon>
         </a>
       </div>
     </mat-toolbar>
