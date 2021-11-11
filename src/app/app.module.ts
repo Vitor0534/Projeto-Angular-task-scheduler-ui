@@ -16,6 +16,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {MAT_DATE_LOCALE} from "@angular/material/core";
 import { LoginComponent } from './components/login/login/login.component';
+import { ExecutavelListaComponent } from './components/executavel/executavel-lista/executavel-lista.component';
+import { ExecutavelEdicaoComponent } from './components/executavel/executavel-edicao/executavel-edicao.component';
+import { ExecutavelComponent } from './components/executavel/executavel.component';
+import { ExecutavelInicioComponent } from './components/executavel/executavel-inicio/executavel-inicio.component';
+import {MatListModule} from "@angular/material/list";
 
 
 
@@ -24,7 +29,11 @@ import { LoginComponent } from './components/login/login/login.component';
   declarations: [
     AppComponent,
     CadastroUsuarioComponent,
-    LoginComponent
+    LoginComponent,
+    ExecutavelListaComponent,
+    ExecutavelEdicaoComponent,
+    ExecutavelComponent,
+    ExecutavelInicioComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +47,8 @@ import { LoginComponent } from './components/login/login/login.component';
     FormsModule,
     //serve para conter as regras de negocio do cadastro
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    MatListModule
 
 
   ],

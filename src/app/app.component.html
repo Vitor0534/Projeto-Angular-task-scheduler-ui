@@ -10,6 +10,7 @@
         <h2> Task Scheduler</h2>
       </a>
 
+      <!-- mensagem de bem vindo que somente aparece se o user estiver logado-->
       <div class="bem-vindo" *ngIf="existeUsuarioLogado()">
         <a style="font-size:14px">
           Bem-Vindo {{nomeUsuarioLogado()}}
@@ -28,6 +29,14 @@
         >
           Cadastre-se
         </a>
+
+        <a mat-button routerLink="/executaveis"
+           *ngIf="existeUsuarioLogado()"
+        >
+          Executaveis
+        </a>
+
+        <!-- botão de sair que somente aparece se o user estiver logado-->
         <a mat-button
            *ngIf="existeUsuarioLogado()"
            (click) ="realizarLogout()"

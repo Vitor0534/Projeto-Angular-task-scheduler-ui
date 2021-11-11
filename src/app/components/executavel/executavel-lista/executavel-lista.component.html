@@ -1,0 +1,43 @@
+<div class="executavel-lista">
+  <mat-card class="executavel-lista-box">
+    <mat-card-title matSubheader>
+      <mat-icon mat-list-icon style="padding-right: 15px">
+        assignment
+      </mat-icon>
+      Lista de executáveis
+    </mat-card-title>
+    <button
+      mat-stroked-button
+      color="primary"
+      class="btn-block"
+      (click) = "onNovoExecutavel()"
+      >
+      <mat-icon>add_task</mat-icon>
+      Novo Executável
+    </button>
+    <mat-card-content>
+      <mat-nav-list>
+          <a mat-list-item
+             (click) = "onSelecionarExecutavel(executavel)"
+             *ngFor = "let executavel of executaveis">
+              <mat-icon mat-list-icon>keyboard_arrow_right</mat-icon>
+              <h3 mat-line>{{executavel.titulo}}</h3>
+              <p mat-line>{{executavel.descricao}}</p>
+            <!-- dispara a execução da task-->
+            <button mat-icon-button>
+                <mat-icon>play_arrow</mat-icon>
+              </button>
+            <!-- agenda a execução-->
+            <button mat-icon-button>
+                <mat-icon>scheduler</mat-icon>
+            </button>
+            <!-- deleta a task-->
+            <button mat-icon-button
+            (click) = "onRemoveExecutavel(executavel)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </a>
+      </mat-nav-list>
+    </mat-card-content>
+  </mat-card>
+</div>
