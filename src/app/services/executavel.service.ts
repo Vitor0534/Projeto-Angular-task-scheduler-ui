@@ -82,4 +82,15 @@ export class ExecutavelService{
     this.listaExecutaveisSubject.next(this.executaveis.slice());
   }
 
+  getExecutavelPorId(id: number): Executavel{
+    const executavel = this.executaveis.find(
+      (executavelAtual: Executavel) => {
+        return executavelAtual.id === id;
+      }
+    );
+    return <Executavel>executavel;
+
+
+  }
+
 }

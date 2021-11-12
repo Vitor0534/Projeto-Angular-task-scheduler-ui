@@ -11,6 +11,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 
 @NgModule(
@@ -28,7 +29,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
       MatListModule,
       MatGridListModule,
       MatChipsModule,
-      MatTooltipModule
+      MatTooltipModule,
+      MatExpansionModule
 
     ],
     //exports: tudo que será exportado para fora do modulo, o que está listado aqui pode ser visualizado
@@ -45,7 +47,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
       MatListModule,
       MatGridListModule,
       MatChipsModule,
-      MatTooltipModule
+      MatTooltipModule,
+      MatExpansionModule
 
     ],
     //providers: são os provedores dos modulos

@@ -6,7 +6,7 @@ export class Executavel{
   descricao:string;
   classeExecutavel:string;
   dataCriacao: Date;
-  parametro: Parametro[];
+  parametros: Parametro[];
 
 
   constructor(id: number, titulo: string, descricao: string, classeExecutavel: string, parametro: Parametro[]) {
@@ -14,7 +14,7 @@ export class Executavel{
     this.titulo = titulo;
     this.descricao = descricao;
     this.classeExecutavel = classeExecutavel;
-    this.parametro = parametro;
+    this.parametros = parametro;
     this.dataCriacao = new Date();
   }
 }
