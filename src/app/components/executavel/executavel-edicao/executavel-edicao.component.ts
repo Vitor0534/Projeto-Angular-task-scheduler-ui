@@ -87,14 +87,22 @@ export class ExecutavelEdicaoComponent implements OnInit {
   }
 
   onNovoParametro():void{
-
+    this.parametrosFormArray.push(
+      new FormGroup(
+        {
+          nome: new FormControl('', [Validators.required]),
+          valor: new FormControl('', [Validators.required]),
+        }
+      )
+    );
+  }
+  onExcluirParametro(indice:number):void{
+    this.parametrosFormArray.removeAt(indice);
   }
   get parametrosControl(): AbstractControl[]{
     return this.parametrosFormArray.controls;
   }
 
-  onExcluirParametro(indice:number):void{
 
-  }
 
 }

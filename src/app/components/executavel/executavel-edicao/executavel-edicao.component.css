@@ -1,6 +1,7 @@
 .execucao-edicao{
   height: 100%;
   padding:1em;
+  border: 1px solid red;
 }
 
 .execucao-edicao .example-form{
@@ -16,19 +17,21 @@
 
 .execucao-edicao-box{
   float: left;
-  padding: 20px 20px 40px 20px;
-  width: 100%;
+  padding: 20px 30px 40px 20px;
+  width: 50em;
   border-radius: 10px;
   transform: scale(1);
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   z-index: 5;
+  border: 1px solid red;
 }
 
 
 .executavel-edicao--botao-excluir-parametro{
-  max-width: 200px;
+  width: 400px;
   padding-bottom: 20px;
+  border: 1px solid red;
 }
 
 .executavel-edicao--parametros-box{

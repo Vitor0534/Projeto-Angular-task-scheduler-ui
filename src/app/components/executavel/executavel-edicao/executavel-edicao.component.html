@@ -2,7 +2,7 @@
   <mat-card class="execucao-edicao-box">
     <mat-card-header matSubheader>
       <!-- o titulo é dinâmico de acordo com o modo editavel e a task atual-->
-      <mat-card-title>{{modoEdicao ? 'Atualizaçao de um Executavel' : 'Criação de um Executavel'}}</mat-card-title>
+      <mat-card-title>{{modoEdicao ? 'Atualização de um Executavel' : 'Criação de um Executavel'}}</mat-card-title>
     </mat-card-header>
 
       <form class="example-form"
@@ -43,52 +43,53 @@
               <mat-panel-title>Parâmetros do Executavel</mat-panel-title>
               <mat-panel-description>Clique aqui para expandir</mat-panel-description>
             </mat-expansion-panel-header>
-          </mat-expansion-panel>
 
-          <div class="executavel-edicao--botao-excluir-parametro">
-            <button mat-stroked-button
-                    color="primary"
-                    type="button"
-                    class="btn-block"
-                    (click)="onNovoParametro()"
-            >
-              <mat-icon>library_add</mat-icon>
-              Novo Parâmetro
-            </button>
-          </div>
-
-          <!--ele mantem um array de parametros, já que as mudançar ocorrem dinamicamente -->
-          <div formArrayName="parametros">
-            <div fxLayout="row" fxLayoutGap="38px"
-                 *ngFor="let parametroControlAtual of parametrosControl; let indice = index"
-                 [formGroupName]="indice">
-
-              <mat-form-field class="example-full-width">
-                <mat-label>Nome</mat-label>
-                <input matInput
-                       formControlName="nome"
-                       placeholder="Ex: TaskGerarRelatorio"
-                       required
-                >
-              </mat-form-field>
-              <mat-form-field class="example-full-width">
-                <mat-label>Valor</mat-label>
-                <input matInput
-                       formControlName="Valor"
-                       placeholder="Ex: TaskGerarRelatorio"
-                       required
-                >
-              </mat-form-field>
-
-              <button class="executavel-edicao--botao-excluir-parametro"
-                      mat-raised-button
-                      color="warn"
+            <div class="executavel-edicao--botao-excluir-parametro">
+              <button mat-stroked-button
+                      color="primary"
                       type="button"
-                      (click)="onExcluirParametro(indice)">
-                X
+                      class="btn-block"
+                      (click)="onNovoParametro()"
+              >
+                <mat-icon>library_add</mat-icon>
+                Novo Parâmetro
               </button>
             </div>
-          </div>
+
+            <!--ele mantem um array de parametros, já que as mudançar ocorrem dinamicamente -->
+            <div formArrayName="parametros">
+              <div fxLayout="row" fxLayoutGap="38px"
+                   class="executavel-edicao--parametros-box"
+                   *ngFor="let parametroControlAtual of parametrosControl; let indice = index"
+                   [formGroupName]="indice">
+
+                <mat-form-field class="example-full-width">
+                  <mat-label>Nome</mat-label>
+                  <input matInput
+                         formControlName="nome"
+                         placeholder="Ex: TaskGerarRelatorio"
+                         required
+                  >
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Valor</mat-label>
+                  <input matInput
+                         formControlName="Valor"
+                         placeholder="Ex: TaskGerarRelatorio"
+                         required
+                  >
+                </mat-form-field>
+
+                <button class="executavel-edicao--botao-excluir-parametro"
+                        mat-raised-button
+                        color="warn"
+                        type="button"
+                        (click)="onExcluirParametro(indice)">
+                  X
+                </button>
+              </div>
+            </div>
+          </mat-expansion-panel>
         </mat-card-content>
       </form>
   </mat-card>

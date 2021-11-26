@@ -52,8 +52,10 @@ export class ExecutavelListaComponent implements OnInit, OnDestroy {
     //ou seja, carregar o novo componente sem redirecionar a página, mantendo o menu de taks
     this.router.navigate(['nova'], {relativeTo:this.activateRoute});
   }
-  onSelecionarExecutavel(executavel: Executavel):void{
 
+  //sempre que o user clica em um executavel da lista, ele redireciona a rota com os dados do excutavel
+  onSelecionarExecutavel(executavel: Executavel):void{
+    this.router.navigate([executavel.id,'edicao'],{relativeTo:this.activateRoute});
   }
 
   onRemoveExecutavel(executavel: Executavel): void {

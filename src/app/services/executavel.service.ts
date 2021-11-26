@@ -10,20 +10,20 @@ import {Subject} from "rxjs";
 export class ExecutavelService{
   private executaveis: Executavel[] =
     [
-      new Executavel(this.getRandonId(), 'Gerar relatorio de vendas da semana',
+      new Executavel(1, 'Gerar relatorio de vendas da semana',
                     "Gerar relatorio em formato XLSX de vendas da semana e salva na pasta -> Meus Documentos",
                     'TaskGerarRelatorioSemanalVendas',
                     [
                        new Parametro('Relatorio 1','Relatorio Vendas Semanal'),
                        new Parametro('dataInicio','28/09/2021'),
                      ]),
-      new Executavel(this.getRandonId(), 'Atualizar os dados do painel de BI',
+      new Executavel(2, 'Atualizar os dados do painel de BI',
         'Atualize o painel de BI com os ultimos dados produzidos pelo sistema',
         'TaskAtualizarDadosBI',
         [
           new Parametro('Relatorio 2','Painel Analitivo de Gastos'),
         ]),
-      new Executavel(this.getRandonId(), 'Enviar e-mail parabenizando os aniversariantes do mês',
+      new Executavel(3, 'Enviar e-mail parabenizando os aniversariantes do mês',
         'Enviar e-mail de felicitação aos aniversariantes do mês da sua equipe',
         'TaskEnviarEmailAniversariantesMes',
         [
