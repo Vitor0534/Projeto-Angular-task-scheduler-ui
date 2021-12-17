@@ -34,9 +34,6 @@ export class ExecutavelService{
     //parametro que para utilizar o padrão observable e recarregar componentes dinamicamente
     //essa é a lista de interessados no evento
     listaExecutaveisSubject = new Subject<Executavel[]>();
-  getRandonId(): number{
-    return Math.floor(Math.random()*100);
-  }
 
   getEcecutaveis(): Executavel[]{
     //o método slice indica que sera retornado uma copia do array

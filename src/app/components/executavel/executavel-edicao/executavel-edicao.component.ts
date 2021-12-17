@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {AbstractControl, FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ExecutavelService} from "../../../services/executavel.service";
+import {Executavel} from "../../../models/executavel.model";
 
 @Component({
   selector: 'app-executavel-edicao',
@@ -83,7 +84,26 @@ export class ExecutavelEdicaoComponent implements OnInit {
   }
 
   onSubimit():void{
+    const titulo = this.formularioExecutavel.value.titulo;
+    const classeExecutavel = this.formularioExecutavel.value.classeExecutavel;
+    const descricao = this.formularioExecutavel.value.descricao;
+    const parametros = this.formularioExecutavel.value.parametros;
 
+    const executavel = new Executavel(this.getRandonId(),titulo, descricao, classeExecutavel, parametros);
+
+    if(this.modoEdicao){
+      //novoExecutavel.id=this.formularioExecutavel.value.id;
+      this.executavelService.atualizarExecutavel(this.idExecutavelAtual,executavel);
+    }else{
+      this.executavelService.adicionarExecutavel(executavel);
+    }
+    this.formularioExecutavel.reset()
+    this.onCancelar()
+
+  }
+
+  getRandonId(): number{
+    return Math.floor(Math.random()*100);
   }
 
   onNovoParametro():void{
@@ -101,6 +121,14 @@ export class ExecutavelEdicaoComponent implements OnInit {
   }
   get parametrosControl(): AbstractControl[]{
     return this.parametrosFormArray.controls;
+  }
+
+  onCancelar():void{
+    if(this.modoEdicao){
+      this.router.navigate(['../../'], {relativeTo: this.activetedRoute});
+    }else{
+      this.router.navigate(['../'],{relativeTo: this.activetedRoute});
+    }
   }
 
 

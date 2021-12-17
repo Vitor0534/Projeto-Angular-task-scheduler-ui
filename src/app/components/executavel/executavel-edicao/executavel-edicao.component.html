@@ -69,14 +69,16 @@
                          formControlName="nome"
                          placeholder="Ex: TaskGerarRelatorio"
                          required
+                         [value]="parametroControlAtual.value.name"
                   >
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
                   <mat-label>Valor</mat-label>
                   <input matInput
-                         formControlName="Valor"
+                         formControlName="valor"
                          placeholder="Ex: TaskGerarRelatorio"
                          required
+                         [value]="parametroControlAtual.value.valor"
                   >
                 </mat-form-field>
 
@@ -91,6 +93,26 @@
             </div>
           </mat-expansion-panel>
         </mat-card-content>
+        <div fxLayout="row" fxLayoutGap="20px">
+          <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              class="btn-block"
+              [disabled]="!formularioExecutavel.valid">
+              {{modoEdicao ? 'Atualizar' : 'Cadastrar'}}
+          </button>
+
+          <button
+              mat-raised-button
+              color="warn"
+              type="button"
+              class="btn-block"
+              (click)="onCancelar()">
+              Cancelar
+          </button>
+
+        </div>
       </form>
   </mat-card>
 </div>
