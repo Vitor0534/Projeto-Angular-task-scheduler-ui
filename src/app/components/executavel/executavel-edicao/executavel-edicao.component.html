@@ -1,0 +1,118 @@
+<div fxLayout="row" class="execucao-edicao" fxLayoutAligh="center">
+  <mat-card class="execucao-edicao-box">
+    <mat-card-header matSubheader>
+      <!-- o titulo é dinâmico de acordo com o modo editavel e a task atual-->
+      <mat-card-title>{{modoEdicao ? 'Atualização de um Executavel' : 'Criação de um Executavel'}}</mat-card-title>
+    </mat-card-header>
+
+      <form class="example-form"
+            [formGroup]="formularioExecutavel" (ngSubmit) = "onSubimit()">
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <mat-label>Titulo</mat-label>
+            <input matInput
+                   [formControl]="tituloFormControl"
+                   placeholder="Ex: Gerar relatório..."
+                   required
+            >
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Classe Executável</mat-label>
+            <input matInput
+                   [formControl]="claseExecutavelFormControl"
+                   placeholder="Ex: TaskGerarRelatorio"
+                   required
+            >
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Descrição</mat-label>
+            <textarea
+                   matInput
+                   rows="3"
+                   [formControl]="descricaoFormControl"
+                   placeholder="Ex: Esta task consiste da geração do relatório"
+            ></textarea>
+          </mat-form-field>
+
+
+          <!-- é um painel expansível para edição do objeto com os parametros do executavel-->
+          <mat-expansion-panel (closed)="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title>Parâmetros do Executavel</mat-panel-title>
+              <mat-panel-description>Clique aqui para expandir</mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="executavel-edicao--botao-excluir-parametro">
+              <button mat-stroked-button
+                      color="primary"
+                      type="button"
+                      class="btn-block"
+                      (click)="onNovoParametro()"
+              >
+                <mat-icon>library_add</mat-icon>
+                Novo Parâmetro
+              </button>
+            </div>
+
+            <!--ele mantem um array de parametros, já que as mudançar ocorrem dinamicamente -->
+            <div formArrayName="parametros">
+              <div fxLayout="row" fxLayoutGap="38px"
+                   class="executavel-edicao--parametros-box"
+                   *ngFor="let parametroControlAtual of parametrosControl; let indice = index"
+                   [formGroupName]="indice">
+
+                <mat-form-field class="example-full-width">
+                  <mat-label>Nome</mat-label>
+                  <input matInput
+                         formControlName="nome"
+                         placeholder="Ex: TaskGerarRelatorio"
+                         required
+                         [value]="parametroControlAtual.value.name"
+                  >
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Valor</mat-label>
+                  <input matInput
+                         formControlName="valor"
+                         placeholder="Ex: TaskGerarRelatorio"
+                         required
+                         [value]="parametroControlAtual.value.valor"
+                  >
+                </mat-form-field>
+
+                <button class="executavel-edicao--botao-excluir-parametro"
+                        mat-raised-button
+                        color="warn"
+                        type="button"
+                        (click)="onExcluirParametro(indice)">
+                  X
+                </button>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-card-content>
+        <div fxLayout="row" fxLayoutGap="20px">
+          <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              class="btn-block"
+              [disabled]="!formularioExecutavel.valid">
+              {{modoEdicao ? 'Atualizar' : 'Cadastrar'}}
+          </button>
+
+          <button
+              mat-raised-button
+              color="warn"
+              type="button"
+              class="btn-block"
+              (click)="onCancelar()">
+              Cancelar
+          </button>
+
+        </div>
+      </form>
+  </mat-card>
+</div>
